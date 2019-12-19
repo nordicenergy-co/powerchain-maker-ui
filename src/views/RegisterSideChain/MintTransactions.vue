@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <span class="text-lition-gray text-sm font-medium">{{ $t('step') }} 2/4</span>
-      <h1 class="font-lition text-3xl font-bold">
-        {{ $t('headline.mint.minted') }} <span class="text-active">{{ $t('headline.mint.lit') }}</span> {{
+      <span class="text-powerchain-gray text-sm font-medium">{{ $t('step') }} 2/4</span>
+      <h1 class="font-powerchain text-3xl font-bold">
+        {{ $t('headline.mint.minted') }} <span class="text-active">{{ $t('headline.mint.net') }}</span> {{
         $t('headline.mint.test_tokens') }}
       </h1>
       <div class="mt-6">
         <div class="mt-2" v-for="(mint, index) in mints" :key="index">
           <div class="flex items-center">
             <Check size="xxs"></Check>
-            <p class="ml-4 text-md font-bold">{{ mint.tokens }} LIT tokens successfully minted on</p>
+            <p class="ml-4 text-md font-bold">{{ mint.tokens }} NET tokens successfully minted on</p>
           </div>
-          <p class="ml-8 text-md text-lition-gray">
+          <p class="ml-8 text-md text-powerchain-gray">
             <a class="hover:text-secondary" :href="etherScan(network, mint.transaction)" target="_blank">{{ mint.transaction.from
               }}</a>
           </p>

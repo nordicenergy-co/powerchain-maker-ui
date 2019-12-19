@@ -31,7 +31,7 @@ export default {
     mint: {
       mint: 'Mint',
       minted: 'Minted',
-      lit: 'LIT',
+      net: 'NET',
       test_tokens: 'Test Tokens'
     },
     approve_spender: 'Approve spender',
@@ -52,7 +52,7 @@ export default {
   mint: {
     metamask: 'If you don\'t have existing Ethereum wallet, <a class=\'text-secondary hover:underline\' href=\'https://metamask.io/\' target=\'_blank\'>create one using Metamask</a>',
     skip: {
-      first: 'If you already have LIT Tokens',
+      first: 'If you already have NET Tokens',
       second: 'skip to approve sender section'
     },
     minting_tokens: 'Minting tokens ...',

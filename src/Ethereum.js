@@ -20,17 +20,17 @@ export default async (ethereum, web3) => {
   const _ethereum = ethereum
   const _currentProvider = web3.currentProvider
   let _erc20Contract
-  let _litionRegistryContract
+  let _PowerChainRegistryContract
   let _web3
   let _account
-  let _litionRegistryContractAddress
+  let _PowerChainRegistryContractAddress
   let _accountsChangedEventRegistered = false
 
-  function initialize (litionErc20Abi = getErc20Abi(), litionRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), litionRegistryContractAddress = getPowerChainRegistryAddress()) {
-    _litionRegistryContractAddress = litionRegistryContractAddress
+  function initialize (powerchainErc20Abi = getErc20Abi(), PowerChainRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), PowerChainRegistryContractAddress = getPowerChainRegistryAddress()) {
+    _PowerChainRegistryContractAddress = PowerChainRegistryContractAddress
     _web3 = new Web3(_currentProvider)
-    _erc20Contract = new _web3.eth.Contract(litionErc20Abi, erc20ContractAddress)
-    _litionRegistryContract = new _web3.eth.Contract(litionRegistryAbi, litionRegistryContractAddress)
+    _erc20Contract = new _web3.eth.Contract(powerchainErc20Abi, erc20ContractAddress)
+    _PowerChainRegistryContract = new _web3.eth.Contract(PowerChainRegistryAbi, PowerChainRegistryContractAddress)
   }
 
   initialize(
@@ -61,8 +61,8 @@ export default async (ethereum, web3) => {
         _accountsChangedEventRegistered = true
       }
     },
-    reinitialize (litionErc20Abi = getErc20Abi(), litionRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), litionRegistryContractAddress = getPowerChainRegistryAddress()) {
-      initialize(litionErc20Abi, litionRegistryAbi, erc20ContractAddress, litionRegistryContractAddress)
+    reinitialize (powerchainErc20Abi = getErc20Abi(), PowerChainRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), PowerChainRegistryContractAddress = getPowerChainRegistryAddress()) {
+      initialize(powerchainErc20Abi, PowerChainRegistryAbi, erc20ContractAddress, PowerChainRegistryContractAddress)
     },
     getNetworkName () {
       return _network
@@ -86,7 +86,7 @@ export default async (ethereum, web3) => {
 
       return _erc20Contract
         .methods
-        .approve(_litionRegistryContractAddress, tokensToLitPrecision(tokens))
+        .approve(_PowerChainRegistryContractAddress, tokensToLitPrecision(tokens))
         .send({
           from: _account
         })
@@ -113,7 +113,7 @@ export default async (ethereum, web3) => {
         chainValidator = '0x0000000000000000000000000000000000000000'
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .registerChain(
           description,
@@ -138,7 +138,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .getChainStaticDetails(chainId)
         .call()
@@ -148,7 +148,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .getChainDynamicDetails(chainId)
         .call()
@@ -158,7 +158,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .requestVestInChain(chainId, tokensToLitPrecision(tokens))
         .send({
@@ -174,7 +174,7 @@ export default async (ethereum, web3) => {
       const totalVesting = parseInt(fromLitPrecisionToTokens(userDetails.vesting))
       const newVesting = totalVesting + parseInt(tokens)
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .requestVestInChain(chainId, tokensToLitPrecision(newVesting))
         .send({
@@ -186,7 +186,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .confirmVestInChain(chainId)
         .send({
@@ -198,7 +198,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .requestDepositInChain(chainId, tokensToLitPrecision(tokens))
         .send({
@@ -216,7 +216,7 @@ export default async (ethereum, web3) => {
 
       console.log(chainId, tokensToLitPrecision(newDeposit))
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .requestDepositInChain(chainId, tokensToLitPrecision(newDeposit))
         .send({
@@ -228,7 +228,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .getUserDetails(chainId, _account)
         .call()
@@ -266,7 +266,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .confirmDepositWithdrawalFromChain(chainId)
         .send({
@@ -278,7 +278,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .startMining(chainId)
         .send({
@@ -290,7 +290,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _litionRegistryContract
+      return _PowerChainRegistryContract
         .methods
         .stopMining(chainId)
         .send({

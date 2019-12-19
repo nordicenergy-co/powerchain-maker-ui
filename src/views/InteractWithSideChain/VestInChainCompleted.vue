@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <h1 class="font-lition text-3xl font-bold">Request vesting in chain completed</h1>
+      <h1 class="font-powerchain text-3xl font-bold">Request vesting in chain completed</h1>
     </div>
     <div v-if="lastVestInChain" class="mt-6">
       <div class="mt-2">
         <div class="flex items-center">
           <Check size="xxs"></Check>
-          <p class="ml-4 text-md font-bold">{{ lastVestInChain.tokens }} LIT tokens successfully requested to be vested
+          <p class="ml-4 text-md font-bold">{{ lastVestInChain.tokens }} NET tokens successfully requested to be vested
             from</p>
         </div>
-        <p class="ml-8 text-md text-lition-gray">
+        <p class="ml-8 text-md text-powerchain-gray">
           <a class="hover:text-secondary" :href="etherScan(network, lastVestInChain.transaction)" target="_blank">{{
             lastVestInChain.transaction.from
             }}</a>

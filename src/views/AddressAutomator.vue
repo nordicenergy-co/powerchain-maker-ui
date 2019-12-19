@@ -1,38 +1,38 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <h1 class="font-lition text-3xl font-bold">Automator</h1>
+      <h1 class="font-powerchain text-3xl font-bold">Automator</h1>
       <div class="flex flex-col mt-2">
-        <label class="text-xs text-lition-gray font-medium">SC address</label>
+        <label class="text-xs text-powerchain-gray font-medium">SC address</label>
         <TextInput v-model="smartContractAddress"></TextInput>
       </div>
       <div class="flex flex-col mt-2">
-        <label class="text-xs text-lition-gray font-medium">Chain Id</label>
+        <label class="text-xs text-powerchain-gray font-medium">Chain Id</label>
         <TextInput v-model="chainId"></TextInput>
       </div>
       <div class="flex flex-col items-start w-full">
         <div class="flex flex-col mt-2">
-          <label class="text-xs text-lition-gray font-medium">Vesting</label>
+          <label class="text-xs text-powerchain-gray font-medium">Vesting</label>
           <CheckboxInput :value="isVesting" @input="toggleVesting"></CheckboxInput>
           <TextInput class="mt-2" v-if="isVesting" v-model="vesting"></TextInput>
         </div>
         <div class="flex flex-col mt-2">
-          <label class="text-xs text-lition-gray font-medium">Deposit</label>
+          <label class="text-xs text-powerchain-gray font-medium">Deposit</label>
           <CheckboxInput :value="isDeposit" @input="toggleDeposit"></CheckboxInput>
           <TextInput class="mt-2" v-if="isDeposit" v-model="deposit"></TextInput>
         </div>
       </div>
       <div class="flex flex-col mt-2 w-full">
-        <label class="text-xs text-lition-gray font-medium">Run these actions</label>
-        <label class="text-xs text-lition-gray font-medium">Mint</label>
+        <label class="text-xs text-powerchain-gray font-medium">Run these actions</label>
+        <label class="text-xs text-powerchain-gray font-medium">Mint</label>
         <CheckboxInput v-model="shouldMint"></CheckboxInput>
-        <label class="text-xs text-lition-gray font-medium">Approve</label>
+        <label class="text-xs text-powerchain-gray font-medium">Approve</label>
         <CheckboxInput v-model="shouldApprove"></CheckboxInput>
-        <label class="text-xs text-lition-gray font-medium">Vest</label>
+        <label class="text-xs text-powerchain-gray font-medium">Vest</label>
         <CheckboxInput v-model="shouldVest"></CheckboxInput>
-        <label class="text-xs text-lition-gray font-medium">Confirm Vest</label>
+        <label class="text-xs text-powerchain-gray font-medium">Confirm Vest</label>
         <CheckboxInput v-model="shouldConfirmVest"></CheckboxInput>
-        <label class="text-xs text-lition-gray font-medium">Deposit</label>
+        <label class="text-xs text-powerchain-gray font-medium">Deposit</label>
         <CheckboxInput v-model="shouldDeposit"></CheckboxInput>
       </div>
       <div class="mt-8">
@@ -69,7 +69,7 @@ export default {
   data () {
     return {
       address: null,
-      smartContractAddress: '0xFa7C55a11E2707B17a60daf24E5Ac95E3CBFF838',
+      smartContractAddress: '0x1383b6EFe917e2BB5d80a55a8B1A81f360eD06bd',
       isVesting: true,
       isDeposit: false,
       vesting: '20000',
@@ -90,7 +90,7 @@ export default {
   methods: {
     async handleRunAutomation () {
       try {
-        this.ethereum.reinitialize(PowerChainERC20Abi, PowerChainRegistryAbi, '0x65fc0f7d2bb96a9be30a770fb5fcd5a7762ad659', this.smartContractAddress)
+        this.ethereum.reinitialize(PowerChainERC20Abi, PowerChainRegistryAbi, '0x1383b6EFe917e2BB5d80a55a8B1A81f360eD06bd', this.smartContractAddress)
 
         const tokens = 100000
 

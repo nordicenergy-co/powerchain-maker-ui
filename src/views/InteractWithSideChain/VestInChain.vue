@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <h1 class="font-lition text-3xl font-bold">{{ $t('headline.vest_in_chain') }}</h1>
+      <h1 class="font-powerchain text-3xl font-bold">{{ $t('headline.vest_in_chain') }}</h1>
     </div>
 
     <div v-if="userDetails" class="w-full mt-8">
-      <span class="uppercase text-sm text-lition-gray font-medium">Total vesting:</span>
-      <span class="uppercase text-sm ml-2">{{ formatTokens(userDetails.vesting) }} LIT</span>
+      <span class="uppercase text-sm text-powerchain-gray font-medium">Total vesting:</span>
+      <span class="uppercase text-sm ml-2">{{ formatTokens(userDetails.vesting) }} NET</span>
     </div>
     <div v-else class="w-full mt-8 flex justify-center h-12">
       <span class="spinner-in-page"></span>
@@ -14,9 +14,9 @@
 
     <div class="w-full mt-8">
       <div class="w-3/4">
-        <label class="text-xs text-lition-gray font-medium">Add tokens to vesting</label>
+        <label class="text-xs text-powerchain-gray font-medium">Add tokens to vesting</label>
         <div class="relative">
-          <LitTextInput v-model="tokens" @action="handleAction" :loading="processing" placeholder="LIT 0">Vest
+          <LitTextInput v-model="tokens" @action="handleAction" :loading="processing" placeholder="NET 0">Vest
           </LitTextInput>
           <Tooltip v-if="errorMessage" class="absolute top-0 right-0 -mr-48 -mt-6">
             <template slot="headline">MetaMask Error</template>

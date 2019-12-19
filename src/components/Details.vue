@@ -2,7 +2,7 @@
   <div class="flex flex-col pl-8">
     <div class="flex flex-col mt-8" v-if="userDetails">
       <span @click="visibleUserDetails = !visibleUserDetails" class="text-white cursor-pointer">User details</span>
-      <div v-if="visibleUserDetails" class="mt-2 flex flex-col text-sm text-lition-gray">
+      <div v-if="visibleUserDetails" class="mt-2 flex flex-col text-sm text-powerchain-gray">
         <p><span @click="fetchUserDetails" class="uppercase font-medium text-white text-xs cursor-pointer">Reload</span></p>
         <p><span class="uppercase font-medium" style="font-size: 10px;">Deposit</span><span class="ml-2 text-xs text-white">{{ fromLitPrecisionToTokens(userDetails.deposit) }}</span>
         </p>
@@ -30,7 +30,7 @@
     </div>
     <div class="flex flex-col mt-8" v-if="chainStaticDetails">
       <span @click="visibleChainStaticDetails = !visibleChainStaticDetails" class="text-white cursor-pointer">Chain static details</span>
-      <div v-if="visibleChainStaticDetails" class="mt-2 flex flex-col text-sm text-lition-gray">
+      <div v-if="visibleChainStaticDetails" class="mt-2 flex flex-col text-sm text-powerchain-gray">
         <p><span class="uppercase font-medium" style="font-size: 10px;">Description</span><span class="ml-2 text-xs text-white">{{ chainStaticDetails.description }}</span>
         </p>
         <p><span class="uppercase font-medium" style="font-size: 10px;">Endpoint</span><span class="ml-2 text-xs text-white">{{ chainStaticDetails.endpoint }}</span>
@@ -59,7 +59,7 @@
     </div>
     <div class="flex flex-col mt-8" v-if="chainDynamicDetails">
       <span @click="visibleChainDynamicDetails = !visibleChainDynamicDetails" class="text-white cursor-pointer">Chain dynamic details</span>
-      <div v-if="visibleChainDynamicDetails" class="mt-2 flex flex-col text-sm text-lition-gray">
+      <div v-if="visibleChainDynamicDetails" class="mt-2 flex flex-col text-sm text-powerchain-gray">
         <p><span @click="fetchDynamicDetails" class="uppercase font-medium text-white text-xs cursor-pointer">Reload</span></p>
         <p><span class="uppercase font-medium" style="font-size: 10px;">Active</span><span class="ml-2 text-xs text-white">{{ chainDynamicDetails.active }}</span>
         </p>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <span class="text-lition-gray text-sm font-medium">{{ $t('step') }} 1/{{ totalSteps }}</span>
-      <h1 class="font-lition text-3xl font-bold" v-html="$t('headline.register.network', { network: network }) "></h1>
-      <p class="mt-2 text-lition-gray font-medium" v-html="$t('subheadline.register.network_change')"></p>
+      <span class="text-powerchain-gray text-sm font-medium">{{ $t('step') }} 1/{{ totalSteps }}</span>
+      <h1 class="font-powerchain text-3xl font-bold" v-html="$t('headline.register.network', { network: network }) "></h1>
+      <p class="mt-2 text-powerchain-gray font-medium" v-html="$t('subheadline.register.network_change')"></p>
     </div>
     <div class="mt-12 flex justify-between">
       <BackButton @click.native="previous">{{ $t('button.main_menu') }}</BackButton>

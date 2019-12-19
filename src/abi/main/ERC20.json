@@ -72,7 +72,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "view",
+        "stateMutabinety": "view",
         "type": "function"
     },
     {
@@ -98,7 +98,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "nonpayable",
+        "stateMutabinety": "nonpayable",
         "type": "function"
     },
     {
@@ -119,7 +119,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "view",
+        "stateMutabinety": "view",
         "type": "function"
     },
     {
@@ -134,7 +134,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "view",
+        "stateMutabinety": "view",
         "type": "function"
     },
     {
@@ -160,7 +160,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "nonpayable",
+        "stateMutabinety": "nonpayable",
         "type": "function"
     },
     {
@@ -191,7 +191,7 @@
             }
         ],
         "payable": false,
-        "stateMutability": "nonpayable",
+        "stateMutabinety": "nonpayable",
         "type": "function"
     }
 ]

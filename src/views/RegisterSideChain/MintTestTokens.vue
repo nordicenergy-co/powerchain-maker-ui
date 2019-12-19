@@ -1,22 +1,22 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <span class="text-lition-gray text-sm font-medium">{{ $t('step') }} 2/{{ totalSteps }}</span>
-      <h1 class="font-lition text-3xl font-bold">
-        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.lit') }}</span> {{
+      <span class="text-powerchain-gray text-sm font-medium">{{ $t('step') }} 2/{{ totalSteps }}</span>
+      <h1 class="font-powerchain text-3xl font-bold">
+        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.net') }}</span> {{
         $t('headline.mint.test_tokens') }}
       </h1>
-      <p class="mt-2 text-lition-gray font-medium">
+      <p class="mt-2 text-powerchain-gray font-medium">
         {{ $t('mint.skip.first') }}
         <router-link class="text-secondary hover:underline" :to="{ name: 'register.approve_spender', params: { network: network }}">{{
           $t('mint.skip.second') }}
         </router-link>
       </p>
       <div class="mt-8 w-3/4 mx-auto">
-        <label v-if="!processing" class="text-xs text-lition-gray font-medium">{{ $t('label.tokens') }}</label>
-        <label v-else class="text-xs text-lition-gray font-medium">{{ $t('mint.minting_tokens') }}</label>
+        <label v-if="!processing" class="text-xs text-powerchain-gray font-medium">{{ $t('label.tokens') }}</label>
+        <label v-else class="text-xs text-powerchain-gray font-medium">{{ $t('mint.minting_tokens') }}</label>
         <div class="relative">
-          <MintTokensInput @mint="handleMinting" v-model="tokens" :loading="processing" placeholder="LIT 0"></MintTokensInput>
+          <MintTokensInput @mint="handleMinting" v-model="tokens" :loading="processing" placeholder="NET 0"></MintTokensInput>
           <Tooltip v-if="errorMessage" class="absolute top-0 right-0 -mr-48 -mt-6">
             <template slot="headline">MetaMask Error</template>
             <template slot="text">{{ errorMessage }}</template>

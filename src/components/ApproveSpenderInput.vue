@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full flex items-center">
-    <span v-if="inputActive" class="absolute text-sm font-medium" style="margin-left: 18px">LIT</span>
+    <span v-if="inputActive" class="absolute text-sm font-medium" style="margin-left: 18px">NET</span>
     <input
             @focus="focus"
             @blur="blur"

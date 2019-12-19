@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <h1 class="font-lition text-3xl font-bold">{{ $t('headline.deposits') }}</h1>
+      <h1 class="font-powerchain text-3xl font-bold">{{ $t('headline.deposits') }}</h1>
       <div class="mt-8 flex">
         <div :class="{ 'btn-tile-active': selected === 'interact.deposit_in_chain' }" class="btn-tile"
              @click="pickOption('interact.deposit_in_chain')">

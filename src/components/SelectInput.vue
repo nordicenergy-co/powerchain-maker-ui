@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <select @input="select" :class="borderColor" class="w-64 h-10 px-4 appearance-none focus:outline-none rounded-lg border-2 bg-white text-sm font-medium">
-      <option class="text-lition-gray" selected disabled><slot></slot></option>
+      <option class="text-powerchain-gray" selected disabled><slot></slot></option>
       <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.text }}</option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

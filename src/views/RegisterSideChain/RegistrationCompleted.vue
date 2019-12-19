@@ -2,9 +2,9 @@
   <div>
     <div class="flex flex-col items-center" style="max-width: 500px;">
       <Check size="lg"></Check>
-      <h1 class="mt-4 font-lition text-3xl font-bold">{{ $t('headline.registration_completed') }}</h1>
+      <h1 class="mt-4 font-powerchain text-3xl font-bold">{{ $t('headline.registration_completed') }}</h1>
       <div v-if="chainDetails" class="mt-8 flex self-start">
-        <div class="flex flex-col items-end text-sm text-lition-gray">
+        <div class="flex flex-col items-end text-sm text-powerchain-gray">
           <span class="uppercase">{{ $t('registration_completed.chain_id') }}:</span>
           <span class="uppercase">{{ $t('registration_completed.description') }}:</span>
           <span class="uppercase">{{ $t('registration_completed.endpoint') }}:</span>
@@ -36,7 +36,7 @@
       <div v-else class="w-full mt-8 flex justify-center h-12">
         <span class="spinner-in-page"></span>
       </div>
-      <p class="mt-8 text-lition-gray text-md"></p>
+      <p class="mt-8 text-powerchain-gray text-md"></p>
       <div class="mt-12 w-full flex justify-end">
         <NextButton @click.native="next">{{ $t('button.interact_with_chain') }}</NextButton>
       </div>
@@ -69,8 +69,8 @@ export default {
     this.fetchChainDetails()
   },
   methods: {
-    fromLitPrecisionToTokens (litPrecision) {
-      return fromLitPrecisionToTokens(litPrecision)
+    fromLitPrecisionToTokens (netPrecision) {
+      return fromLitPrecisionToTokens(netPrecision)
     },
     next () {
       this.$router.push({ name: 'interact', params: { chain: this.chain } })

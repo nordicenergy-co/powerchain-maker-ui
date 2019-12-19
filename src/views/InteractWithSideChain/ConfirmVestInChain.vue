@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="flex flex-col items-center">
-      <h1 class="font-lition text-3xl font-bold">Confirm vest in chain</h1>
+      <h1 class="font-powerchain text-3xl font-bold">Confirm vest in chain</h1>
     </div>
     <div class="mt-8">
-      <span class="uppercase text-sm text-lition-gray font-medium">Chain id:</span>
+      <span class="uppercase text-sm text-powerchain-gray font-medium">Chain id:</span>
       <span class="uppercase text-sm ml-2">{{ chain }}</span>
     </div>
     <div class="mt-2">
@@ -16,7 +16,7 @@
           <Check size="xxs"></Check>
           <p class="ml-4 text-md font-bold">Vesting successfully confirmed</p>
         </div>
-        <p class="ml-8 text-md text-lition-gray">
+        <p class="ml-8 text-md text-powerchain-gray">
           <a class="hover:text-secondary" :href="etherScan(network, lastConfirmVestInChain.transaction)" target="_blank">{{
             lastConfirmVestInChain.transaction.from
             }}</a>
