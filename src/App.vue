@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import NavigationRouteLink from './components/NavigationRouteLink'
-import RegisterSteps from './views/RegisterSideChain/RegisterSteps'
-import InteractionSideMenu from './views/InteractWithSideChain/InteractionSideMenu'
-import { etherScanAddress, getPowerChainRegistryAddress } from './utils'
-import Details from './components/Details'
-import { mapGetters } from 'vuex'
+  import NavigationRouteLink from './components/NavigationRouteLink'
+  import RegisterSteps from './views/RegisterSideChain/RegisterSteps'
+  import InteractionSideMenu from './views/InteractWithSideChain/InteractionSideMenu'
+  import {etherScanAddress, getpowerChainRegistryAddress} from './utils'
+  import Details from './components/Details'
+  import {mapGetters} from 'vuex'
 
-export default {
+  export default {
   inject: ['ethereum'],
   components: { NavigationRouteLink, RegisterSteps, InteractionSideMenu, Details },
   created () {
@@ -38,7 +38,7 @@ export default {
       return this.$route.name.indexOf('interact') !== -1
     },
     smartContractLink () {
-      return etherScanAddress(this.network, getPowerChainRegistryAddress(this.network))
+      return etherScanAddress(this.network, getpowerChainRegistryAddress(this.network))
     },
     hasChainId () {
       if (!Object.prototype.hasOwnProperty.call(this.$route, 'params')) {

@@ -1,6 +1,10 @@
-import { getErc20Abi, getPowerChainRegistryAbi } from './abi/abi'
-import config from './config'
-import { tokensToLitPrecision, fromLitPrecisionToTokens, getErc20ContractAddress, getPowerChainRegistryAddress } from './utils'
+import {getErc20Abi, getpowerChainRegistryAbi} from './abi/abi'
+import {
+  fromNetPrecisionToTokens,
+  getErc20ContractAddress,
+  getpowerChainRegistryAddress,
+  tokensToNetPrecision
+} from './utils'
 import Web3 from 'web3'
 
 export default async (ethereum, web3) => {
@@ -16,53 +20,53 @@ export default async (ethereum, web3) => {
     }
   }
 
-  let _network = getCurrentNetwork(ethereum)
-  const _ethereum = ethereum
-  const _currentProvider = web3.currentProvider
-  let _erc20Contract
-  let _PowerChainRegistryContract
-  let _web3
-  let _account
-  let _PowerChainRegistryContractAddress
-  let _accountsChangedEventRegistered = false
+  let _network = getCurrentNetwork(ethereum);
+  const _ethereum = ethereum;
+  const _currentProvider = web3.currentProvider;
+  let _erc20Contract;
+  let _powerchainRegistryContract;
+  let _web3;
+  let _account;
+  let _powerchainRegistryContractAddress;
+  let _accountsChangedEventRegistered = false;
 
-  function initialize (powerchainErc20Abi = getErc20Abi(), PowerChainRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), PowerChainRegistryContractAddress = getPowerChainRegistryAddress()) {
-    _PowerChainRegistryContractAddress = PowerChainRegistryContractAddress
-    _web3 = new Web3(_currentProvider)
-    _erc20Contract = new _web3.eth.Contract(powerchainErc20Abi, erc20ContractAddress)
-    _PowerChainRegistryContract = new _web3.eth.Contract(PowerChainRegistryAbi, PowerChainRegistryContractAddress)
+  function initialize (powerchainErc20Abi = getErc20Abi(), powerchainRegistryAbi = getpowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), powerchainRegistryContractAddress = getpowerChainRegistryAddress()) {
+    _powerchainRegistryContractAddress = powerchainRegistryContractAddress;
+    _web3 = new Web3(_currentProvider);
+    _erc20Contract = new _web3.eth.Contract(powerchainErc20Abi, erc20ContractAddress);
+    _powerchainRegistryContract = new _web3.eth.Contract(powerchainRegistryAbi, powerchainRegistryContractAddress)
   }
 
   initialize(
     getErc20Abi(_network),
-    getPowerChainRegistryAbi(_network),
+    getpowerChainRegistryAbi(_network),
     getErc20ContractAddress(_network),
-    getPowerChainRegistryAddress(_network)
-  )
+    getpowerChainRegistryAddress(_network)
+  );
 
   return {
     hasMetaMask () {
       return _ethereum.isMetaMask
     },
     async login () {
-      let accounts = await _ethereum.enable()
+      let accounts = await _ethereum.enable();
 
       if (accounts.length === 0) {
         throw Error('User has no MetaMask accounts')
       }
 
-      _account = accounts[0]
+      _account = accounts[0];
 
       if (!_accountsChangedEventRegistered) {
         _ethereum.on('accountsChanged', accounts => {
           _account = accounts[0]
-        })
+        });
 
         _accountsChangedEventRegistered = true
       }
     },
-    reinitialize (powerchainErc20Abi = getErc20Abi(), PowerChainRegistryAbi = getPowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), PowerChainRegistryContractAddress = getPowerChainRegistryAddress()) {
-      initialize(powerchainErc20Abi, PowerChainRegistryAbi, erc20ContractAddress, PowerChainRegistryContractAddress)
+    reinitialize (powerchainErc20Abi = getErc20Abi(), powerchainRegistryAbi = getpowerChainRegistryAbi(), erc20ContractAddress = getErc20ContractAddress(), powerchainRegistryContractAddress = getpowerChainRegistryAddress()) {
+      initialize(powerchainErc20Abi, powerchainRegistryAbi, erc20ContractAddress, powerchainRegistryContractAddress)
     },
     getNetworkName () {
       return _network
@@ -74,7 +78,7 @@ export default async (ethereum, web3) => {
 
       return _erc20Contract
         .methods
-        .mint(_account, tokensToLitPrecision(tokens))
+        .mint(_account, tokensToNetPrecision(tokens))
         .send({
           from: _account
         })
@@ -86,7 +90,7 @@ export default async (ethereum, web3) => {
 
       return _erc20Contract
         .methods
-        .approve(_PowerChainRegistryContractAddress, tokensToLitPrecision(tokens))
+        .approve(_powerchainRegistryContractAddress, tokensToNetPrecision(tokens))
         .send({
           from: _account
         })
@@ -113,15 +117,15 @@ export default async (ethereum, web3) => {
         chainValidator = '0x0000000000000000000000000000000000000000'
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .registerChain(
           description,
           initEndpoint,
           chainValidator,
-          tokensToLitPrecision(minRequiredDeposit),
-          tokensToLitPrecision(minRequiredVesting),
-          tokensToLitPrecision(rewardBonusRequiredVesting),
+          tokensToNetPrecision(minRequiredDeposit),
+          tokensToNetPrecision(minRequiredVesting),
+          tokensToNetPrecision(rewardBonusRequiredVesting),
           rewardBonusPercentage,
           notaryPeriod,
           maxValidators,
@@ -138,7 +142,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .getChainStaticDetails(chainId)
         .call()
@@ -148,7 +152,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .getChainDynamicDetails(chainId)
         .call()
@@ -158,9 +162,9 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
-        .requestVestInChain(chainId, tokensToLitPrecision(tokens))
+        .requestVestInChain(chainId, tokensToNetPrecision(tokens))
         .send({
           from: _account
         })
@@ -170,13 +174,13 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      const userDetails = await this.getUserDetails(chainId)
-      const totalVesting = parseInt(fromLitPrecisionToTokens(userDetails.vesting))
-      const newVesting = totalVesting + parseInt(tokens)
+      const userDetails = await this.getUserDetails(chainId);
+      const totalVesting = parseInt(fromNetPrecisionToTokens(userDetails.vesting));
+      const newVesting = totalVesting + parseInt(tokens);
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
-        .requestVestInChain(chainId, tokensToLitPrecision(newVesting))
+        .requestVestInChain(chainId, tokensToNetPrecision(newVesting))
         .send({
           from: _account
         })
@@ -186,7 +190,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .confirmVestInChain(chainId)
         .send({
@@ -198,9 +202,9 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
-        .requestDepositInChain(chainId, tokensToLitPrecision(tokens))
+        .requestDepositInChain(chainId, tokensToNetPrecision(tokens))
         .send({
           from: _account
         })
@@ -210,15 +214,15 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      const userDetails = await this.getUserDetails(chainId)
-      const totalDeposit = parseInt(fromLitPrecisionToTokens(userDetails.deposit))
-      const newDeposit = totalDeposit + parseInt(tokens)
+      const userDetails = await this.getUserDetails(chainId);
+      const totalDeposit = parseInt(fromNetPrecisionToTokens(userDetails.deposit));
+      const newDeposit = totalDeposit + parseInt(tokens);
 
-      console.log(chainId, tokensToLitPrecision(newDeposit))
+      console.log(chainId, tokensToNetPrecision(newDeposit));
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
-        .requestDepositInChain(chainId, tokensToLitPrecision(newDeposit))
+        .requestDepositInChain(chainId, tokensToNetPrecision(newDeposit))
         .send({
           from: _account
         })
@@ -228,7 +232,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .getUserDetails(chainId, _account)
         .call()
@@ -238,8 +242,8 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      const userDetails = await this.getUserDetails(chainId)
-      const totalVesting = parseInt(fromLitPrecisionToTokens(userDetails.vesting))
+      const userDetails = await this.getUserDetails(chainId);
+      const totalVesting = parseInt(fromNetPrecisionToTokens(userDetails.vesting));
 
       if (tokens > totalVesting) {
         throw new Error(`You can withdraw maximum of ${totalVesting} tokens from vesting`)
@@ -252,8 +256,8 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      const userDetails = await this.getUserDetails(chainId)
-      const totalDeposit = parseInt(fromLitPrecisionToTokens(userDetails.deposit))
+      const userDetails = await this.getUserDetails(chainId);
+      const totalDeposit = parseInt(fromNetPrecisionToTokens(userDetails.deposit));
 
       if (tokens > totalDeposit) {
         throw new Error(`You can withdraw maximum of ${totalDeposit} tokens from deposit`)
@@ -266,7 +270,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .confirmDepositWithdrawalFromChain(chainId)
         .send({
@@ -278,7 +282,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .startMining(chainId)
         .send({
@@ -290,7 +294,7 @@ export default async (ethereum, web3) => {
         await this.login()
       }
 
-      return _PowerChainRegistryContract
+      return _powerchainRegistryContract
         .methods
         .stopMining(chainId)
         .send({

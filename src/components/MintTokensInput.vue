@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import NormalButton from './NormalButton'
+  import NormalButton from './NormalButton'
 
-export default {
+  export default {
   components: { NormalButton },
   props: {
     value: {

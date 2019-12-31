@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import NormalButton from '../../components/NormalButton'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
+  import NormalButton from '../../components/NormalButton'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
 
-export default {
+  export default {
   components: { NormalButton, Tooltip },
   mixins: [WithErrorMessage],
   inject: ['ethereum'],
@@ -59,9 +59,9 @@ export default {
       this.userDetails = await this.ethereum.getUserDetails(this.chain)
     },
     async startMining () {
-      this.startProcessing = true
+      this.startProcessing = true;
       try {
-        await this.ethereum.startMining(this.chain)
+        await this.ethereum.startMining(this.chain);
         this.fetchUserDetails()
       } catch (e) {
         this.handleError()
@@ -70,9 +70,9 @@ export default {
       }
     },
     async stopMining () {
-      this.stopProcessing = true
+      this.stopProcessing = true;
       try {
-        await this.ethereum.stopMining(this.chain)
+        await this.ethereum.stopMining(this.chain);
         this.fetchUserDetails()
       } catch (e) {
         this.handleError()

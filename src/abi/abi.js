@@ -9,12 +9,12 @@ export const getErc20Abi = (network = 'ropsten') => {
   } else if (network === 'ropsten') {
     return ropstenErc20Abi
   }
-}
+};
 
-export const getPowerChainRegistryAbi = (network = 'ropsten') => {
+export const getpowerChainRegistryAbi = (network = 'ropsten') => {
   if (network === 'main') {
     return mainPowerChainRegistryAbi
   } else if (network === 'ropsten') {
     return ropstenPowerChainRegistryAbi
   }
-}
+};

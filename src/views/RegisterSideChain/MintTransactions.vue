@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <span class="text-powerchain-gray text-sm font-medium">{{ $t('step') }} 2/4</span>
       <h1 class="font-powerchain text-3xl font-bold">
-        {{ $t('headline.mint.minted') }} <span class="text-active">{{ $t('headline.mint.net') }}</span> {{
+        {{ $t('headline.mint.minted') }} <span class="text-active">{{ $t('headline.mint.lit') }}</span> {{
         $t('headline.mint.test_tokens') }}
       </h1>
       <div class="mt-6">
@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import Check from '../../components/Check'
-import { mapGetters } from 'vuex'
-import WithEtherScan from '../../components/WithEtherScan'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import Check from '../../components/Check'
+  import {mapGetters} from 'vuex'
+  import WithEtherScan from '../../components/WithEtherScan'
 
-export default {
+  export default {
   mixins: [WithEtherScan],
   components: { NextButton, BackButton, Check },
   props: {

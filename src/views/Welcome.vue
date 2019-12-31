@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import Check from '../components/Check'
-import NextButton from '../components/NextButton'
+  import Check from '../components/Check'
+  import NextButton from '../components/NextButton'
 
-export default {
+  export default {
   components: { Check, NextButton },
   data () {
     return {

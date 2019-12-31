@@ -11,11 +11,11 @@
             :placeholder="dynamicPlaceholder"
             class="w-full h-10 appearance-none focus:outline-none rounded-lg border-2 bg-white text-sm font-medium"
     >
-    <NormalButton @click.native="$emit('approve')" :class="buttonActive"
-                  class="w-24 flex justify-center absolute right-0 ml-12 rounded-l-none"
+    <NormalButton @click.native="$emit('action')" :class="buttonActive"
+                  class="w-20 flex justify-center absolute right-0 ml-12 rounded-l-none"
                   :disabled="!buttonActive">
       <span v-if="loading && buttonActive" class="spinner h-5"></span>
-      <span v-else>{{ $t('button.approve') }}</span>
+      <span v-else><slot></slot></span>
     </NormalButton>
   </div>
 </template>

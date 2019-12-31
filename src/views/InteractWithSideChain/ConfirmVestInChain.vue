@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import ConfirmButton from '../../components/ConfirmButton'
-import BackButton from '../../components/BackButton'
-import WithEtherScan from '../../components/WithEtherScan'
-import Check from '../../components/Check'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
+  import ConfirmButton from '../../components/ConfirmButton'
+  import BackButton from '../../components/BackButton'
+  import WithEtherScan from '../../components/WithEtherScan'
+  import Check from '../../components/Check'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
 
-export default {
+  export default {
   mixins: [WithEtherScan, WithErrorMessage],
   inject: ['ethereum'],
   props: {
@@ -63,9 +63,9 @@ export default {
   },
   methods: {
     async handleAction () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.confirmVestInChain(this.chain)
+        const response = await this.ethereum.confirmVestInChain(this.chain);
         this.lastConfirmVestInChain = {
           chain: this.chain,
           transaction: response

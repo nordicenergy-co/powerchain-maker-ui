@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import ApproveSpenderInput from '../../components/ApproveSpenderInput'
-import Check from '../../components/Check'
-import { etherScanAddress, getPowerChainRegistryAddress, etherScanTransaction } from '../../utils'
-import { getSpender } from '../../transactionUtils'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
+  import ApproveSpenderInput from '../../components/ApproveSpenderInput'
+  import Check from '../../components/Check'
+  import {etherScanAddress, etherScanTransaction, getpowerChainRegistryAddress} from '../../utils'
+  import {getSpender} from '../../transactionUtils'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
 
-export default {
+  export default {
   components: { ApproveSpenderInput, Check, Tooltip },
   mixins: [WithErrorMessage],
   inject: ['ethereum'],
@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     smartContractLink () {
-      return etherScanAddress(this.network, getPowerChainRegistryAddress(this.network))
+      return etherScanAddress(this.network, getpowerChainRegistryAddress(this.network))
     }
   },
   data () {
@@ -71,9 +71,9 @@ export default {
       return etherScanTransaction(this.network, transaction.transactionHash)
     },
     async handleApproval () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.approve(this.tokens)
+        const response = await this.ethereum.approve(this.tokens);
         this.lastApproval = {
           tokens: this.tokens,
           transaction: response

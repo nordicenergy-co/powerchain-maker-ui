@@ -22,9 +22,9 @@
           <span>{{ chain }}</span>
           <span>{{ chainDetails.description }}</span>
           <span>{{ chainDetails.endpoint }}</span>
-          <span>{{ fromLitPrecisionToTokens(chainDetails.minRequiredDeposit) }}</span>
-          <span>{{ fromLitPrecisionToTokens(chainDetails.minRequiredVesting) }}</span>
-          <span>{{ fromLitPrecisionToTokens(chainDetails.rewardBonusRequiredVesting) }}</span>
+          <span>{{ fromNetPrecisionToTokens(chainDetails.minRequiredDeposit) }}</span>
+          <span>{{ fromNetPrecisionToTokens(chainDetails.minRequiredVesting) }}</span>
+          <span>{{ fromNetPrecisionToTokens(chainDetails.rewardBonusRequiredVesting) }}</span>
           <span>{{ chainDetails.rewardBonusPercentage }}</span>
           <span>{{ chainDetails.notaryPeriod }}</span>
           <span>{{ chainDetails.maxNumOfTransactors }}</span>
@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import Check from '../../components/Check'
-import NextButton from '../../components/NextButton'
-import { fromLitPrecisionToTokens } from '../../utils'
+  import Check from '../../components/Check'
+  import NextButton from '../../components/NextButton'
+  import {fromNetPrecisionToTokens} from '../../utils'
 
-export default {
+  export default {
   inject: ['ethereum'],
   components: { Check, NextButton },
   props: {
@@ -69,8 +69,8 @@ export default {
     this.fetchChainDetails()
   },
   methods: {
-    fromLitPrecisionToTokens (netPrecision) {
-      return fromLitPrecisionToTokens(netPrecision)
+    fromNetPrecisionToTokens (litPrecision) {
+      return fromNetPrecisionToTokens(litPrecision)
     },
     next () {
       this.$router.push({ name: 'interact', params: { chain: this.chain } })

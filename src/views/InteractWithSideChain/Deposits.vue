@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import Check from '../../components/Check'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import Check from '../../components/Check'
 
-export default {
+  export default {
   props: {
     chain: {
       type: String

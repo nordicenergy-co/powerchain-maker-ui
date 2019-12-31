@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <span class="text-powerchain-gray text-sm font-medium">{{ $t('step') }} 2/{{ totalSteps }}</span>
       <h1 class="font-powerchain text-3xl font-bold">
-        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.net') }}</span> {{
+        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.lit') }}</span> {{
         $t('headline.mint.test_tokens') }}
       </h1>
       <p class="mt-2 text-powerchain-gray font-medium">
@@ -33,14 +33,14 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import MintTokensInput from '../../components/MintTokensInput'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
-import { mapGetters } from 'vuex'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import MintTokensInput from '../../components/MintTokensInput'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
+  import {mapGetters} from 'vuex'
 
-export default {
+  export default {
   beforeRouteEnter (to, from, next) {
     if (to.params.network === 'main') {
       next({ name: 'register.network', params: { network: this.ethereum.getNetworkName() } })
@@ -78,14 +78,14 @@ export default {
       this.$router.push({ name: 'register.approve_spender', params: { network: this.network } })
     },
     async handleMinting () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.mint(this.tokens)
+        const response = await this.ethereum.mint(this.tokens);
         this.$store.dispatch('addMint', {
           tokens: this.tokens,
           timestamp: new Date(),
           transaction: response
-        })
+        });
         await this.$router.push({ name: 'register.minted_test_tokens', params: { network: this.network } })
       } catch (e) {
         this.handleError()

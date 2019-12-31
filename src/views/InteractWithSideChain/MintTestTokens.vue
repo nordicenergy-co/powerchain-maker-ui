@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-col items-center" style="min-width: 400px;">
       <h1 class="font-powerchain text-3xl font-bold">
-        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.net') }}</span> {{
+        {{ $t('headline.mint.mint') }} <span class="text-active">{{ $t('headline.mint.lit') }}</span> {{
         $t('headline.mint.test_tokens') }}
       </h1>
       <div class="mt-8 w-3/4 mx-auto">
@@ -33,14 +33,14 @@
 </template>
 
 <script>
-import MintTokensInput from '../../components/MintTokensInput'
-import { mapGetters } from 'vuex'
-import Check from '../../components/Check'
-import WithEtherScan from '../../components/WithEtherScan'
-import WithErrorMessage from '../../components/WithErrorMessage'
-import Tooltip from '../../components/Tooltip'
+  import MintTokensInput from '../../components/MintTokensInput'
+  import {mapGetters} from 'vuex'
+  import Check from '../../components/Check'
+  import WithEtherScan from '../../components/WithEtherScan'
+  import WithErrorMessage from '../../components/WithErrorMessage'
+  import Tooltip from '../../components/Tooltip'
 
-export default {
+  export default {
   beforeRouteEnter (to, from, next) {
     if (to.params.network === 'main') {
       next({ name: 'interact.provide_sidechain_id', params: { network: this.ethereum.getNetworkName() } })
@@ -65,9 +65,9 @@ export default {
   },
   methods: {
     async handleMinting () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.mint(this.tokens)
+        const response = await this.ethereum.mint(this.tokens);
         this.lastMint = {
           tokens: this.tokens,
           transaction: response

@@ -8,7 +8,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "constructor"
     },
     {
@@ -222,7 +222,7 @@
         "name": "confirmDepositWithdrawalFromChain",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -237,7 +237,7 @@
         "name": "confirmVestInChain",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -273,7 +273,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -324,7 +324,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -400,7 +400,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -436,7 +436,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -512,7 +512,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -548,7 +548,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -563,7 +563,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "view",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -628,7 +628,7 @@
         "name": "notary",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -704,7 +704,7 @@
             }
         ],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -724,7 +724,7 @@
         "name": "requestDepositInChain",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -744,7 +744,7 @@
         "name": "requestVestInChain",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -769,7 +769,7 @@
         "name": "setChainStaticDetails",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -784,7 +784,7 @@
         "name": "startMining",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -799,7 +799,7 @@
         "name": "stopMining",
         "outputs": [],
         "payable": false,
-        "stateMutabinety": "nonpayable",
+        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]

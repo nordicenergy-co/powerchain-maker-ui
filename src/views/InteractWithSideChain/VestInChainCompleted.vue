@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import Check from '../../components/Check'
-import { mapGetters } from 'vuex'
-import WithEtherScan from '../../components/WithEtherScan'
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
+  import Check from '../../components/Check'
+  import {mapGetters} from 'vuex'
+  import WithEtherScan from '../../components/WithEtherScan'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
 
-export default {
+  export default {
   mixins: [WithEtherScan],
   props: {
     chain: {

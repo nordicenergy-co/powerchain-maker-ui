@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import ApproveSpenderInput from '../../components/ApproveSpenderInput'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
-import { etherScanAddress, getPowerChainRegistryAddress } from '../../utils'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import ApproveSpenderInput from '../../components/ApproveSpenderInput'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
+  import {etherScanAddress, getpowerChainRegistryAddress} from '../../utils'
 
-export default {
+  export default {
   components: { NextButton, BackButton, ApproveSpenderInput, Tooltip },
   mixins: [WithErrorMessage],
   inject: ['ethereum'],
@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     smartContractLink () {
-      return etherScanAddress(this.network, getPowerChainRegistryAddress(this.network))
+      return etherScanAddress(this.network, getpowerChainRegistryAddress(this.network))
     },
     stepNumber () {
       if (this.network === 'main') {
@@ -85,17 +85,17 @@ export default {
       this.$router.push({ name: 'register.new_chain', params: { network: this.network } })
     },
     async handleApproval () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.approve(this.tokens)
+        const response = await this.ethereum.approve(this.tokens);
         this.$store.dispatch('addApproval', {
           tokens: this.tokens,
           timestamp: new Date(),
           transaction: response
-        })
+        });
         await this.$router.push({ name: 'register.approve_transactions', params: { network: this.network } })
       } catch (e) {
-        this.handleError()
+        this.handleError();
         console.log(e)
       } finally {
         this.processing = false

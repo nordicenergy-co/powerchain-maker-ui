@@ -15,8 +15,8 @@
     <div class="w-3/4 mt-4">
       <label class="text-xs text-powerchain-gray font-medium">Tokens to withdraw</label>
       <div class="relative">
-        <LitTextInput v-model="tokens" @action="handleAction" :loading="processing" placeholder="NET 0">Withdraw
-        </LitTextInput>
+        <NetTextInput v-model="tokens" @action="handleAction" :loading="processing" placeholder="NET 0">Withdraw
+        </NetTextInput>
         <Tooltip v-if="errorMessage" class="absolute top-0 right-0 -mr-48 -mt-6">
           <template slot="headline">MetaMask Error</template>
           <template slot="text">{{ errorMessage }}</template>
@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import LitTextInput from '../../components/LitTextInput'
-import BackButton from '../../components/BackButton'
-import { fromLitPrecisionToTokens } from '../../utils'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
+  import NetTextInput from '../../components/NetTextInput'
+  import BackButton from '../../components/BackButton'
+  import {fromNetPrecisionToTokens} from '../../utils'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
 
-export default {
+  export default {
   inject: ['ethereum'],
   mixins: [WithErrorMessage],
   props: {
@@ -47,7 +47,7 @@ export default {
       type: String
     }
   },
-  components: { LitTextInput, BackButton, Tooltip },
+  components: { NetTextInput, BackButton, Tooltip },
   data () {
     return {
       tokens: null,
@@ -60,21 +60,21 @@ export default {
   },
   methods: {
     formatTokens (tokens) {
-      return fromLitPrecisionToTokens(tokens)
+      return fromNetPrecisionToTokens(tokens)
     },
     async fetchUserDetails () {
       this.userDetails = await this.ethereum.getUserDetails(this.chain)
     },
     async handleAction () {
-      this.processing = true
+      this.processing = true;
       try {
-        const response = await this.ethereum.withdrawVestInChain(this.chain, this.tokens)
-        console.log(response)
+        const response = await this.ethereum.withdrawVestInChain(this.chain, this.tokens);
+        console.log(response);
         this.$store.dispatch('setWithdrawVestInChain', {
           tokens: this.tokens,
           timestamp: new Date(),
           transaction: response
-        })
+        });
         await this.$router.push({
           name: 'interact.withdraw_vesting_completed',
           params: { chain: this.chain, network: this.network }

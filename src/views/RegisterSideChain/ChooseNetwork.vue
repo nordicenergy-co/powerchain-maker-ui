@@ -14,12 +14,11 @@
 </template>
 
 <script>
-import NextButton from '../../components/NextButton'
-import BackButton from '../../components/BackButton'
-import { mapGetters } from 'vuex'
-import { isValidNetwork } from '../../utils'
+  import NextButton from '../../components/NextButton'
+  import BackButton from '../../components/BackButton'
+  import {mapGetters} from 'vuex'
 
-export default {
+  export default {
   components: { NextButton, BackButton },
   computed: {
     ...mapGetters([

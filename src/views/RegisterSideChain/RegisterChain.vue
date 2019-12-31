@@ -100,16 +100,16 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import ConfirmButton from '../../components/ConfirmButton'
-import TextInput from '../../components/TextInput'
-import CheckboxInput from '../../components/CheckboxInput'
-import Tooltip from '../../components/Tooltip'
-import WithErrorMessage from '../../components/WithErrorMessage'
-import { etherScanAddress, getPowerChainRegistryAddress } from '../../utils'
-import { getChainId } from '../../transactionUtils'
+  import BackButton from '../../components/BackButton'
+  import ConfirmButton from '../../components/ConfirmButton'
+  import TextInput from '../../components/TextInput'
+  import CheckboxInput from '../../components/CheckboxInput'
+  import Tooltip from '../../components/Tooltip'
+  import WithErrorMessage from '../../components/WithErrorMessage'
+  import {etherScanAddress, getpowerChainRegistryAddress} from '../../utils'
+  import {getChainId} from '../../transactionUtils'
 
-export default {
+  export default {
   components: { ConfirmButton, BackButton, TextInput, CheckboxInput, Tooltip },
   mixins: [WithErrorMessage],
   inject: ['ethereum'],
@@ -121,7 +121,7 @@ export default {
   },
   computed: {
     smartContractLink () {
-      return etherScanAddress(this.network, getPowerChainRegistryAddress(this.network))
+      return etherScanAddress(this.network, getpowerChainRegistryAddress(this.network))
     },
     active () {
       if (this.focus !== null) {
@@ -167,7 +167,7 @@ export default {
       this.$router.push({ name: 'register.approve_spender', params: { network: this.network } })
     },
     async handleRegistration () {
-      this.processing = true
+      this.processing = true;
       try {
         const response = await this.ethereum.registerChain(
           this.description,
@@ -182,12 +182,12 @@ export default {
           this.maxValidators,
           this.notaryVesting,
           this.notaryParticipation
-        )
+        );
 
         this.$store.dispatch('addRegistration', {
           timestamp: new Date(),
           transaction: response
-        })
+        });
 
         await this.$router.push({
           name: 'register.completed',

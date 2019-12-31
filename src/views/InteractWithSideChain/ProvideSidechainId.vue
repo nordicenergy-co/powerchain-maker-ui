@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import TextInput from '../../components/TextInput'
-import { isNumeric, isValidNetwork } from '../../utils'
-import { mapGetters } from 'vuex'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import TextInput from '../../components/TextInput'
+  import {isNumeric} from '../../utils'
+  import {mapGetters} from 'vuex'
 
-export default {
+  export default {
   components: { TextInput, BackButton, NextButton },
   data () {
     return {

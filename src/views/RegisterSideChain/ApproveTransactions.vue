@@ -24,14 +24,14 @@
 </template>
 
 <script>
-import BackButton from '../../components/BackButton'
-import NextButton from '../../components/NextButton'
-import Check from '../../components/Check'
-import { mapGetters } from 'vuex'
-import { etherScanTransaction } from '../../utils'
-import { getSpender } from '../../transactionUtils'
+  import BackButton from '../../components/BackButton'
+  import NextButton from '../../components/NextButton'
+  import Check from '../../components/Check'
+  import {mapGetters} from 'vuex'
+  import {etherScanTransaction} from '../../utils'
+  import {getSpender} from '../../transactionUtils'
 
-export default {
+  export default {
   components: { NextButton, BackButton, Check },
   props: {
     network: {

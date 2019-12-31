@@ -67,7 +67,7 @@ export default {
         return false
       }
 
-      const routeName = this.$route.name
+      const routeName = this.$route.name;
 
       return routes.indexOf(routeName) !== -1
     }

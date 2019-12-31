@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import Check from '../../components/Check'
-import { mapGetters } from 'vuex'
-import WithEtherScan from '../../components/WithEtherScan'
-import BackButton from '../../components/BackButton'
+  import Check from '../../components/Check'
+  import {mapGetters} from 'vuex'
+  import WithEtherScan from '../../components/WithEtherScan'
+  import BackButton from '../../components/BackButton'
 
-export default {
+  export default {
   mixins: [WithEtherScan],
   props: {
     chain: {

@@ -31,7 +31,7 @@ export default {
     mint: {
       mint: 'Mint',
       minted: 'Minted',
-      net: 'NET',
+      lit: 'NET',
       test_tokens: 'Test Tokens'
     },
     approve_spender: 'Approve spender',

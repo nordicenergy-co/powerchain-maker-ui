@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     select (event) {
-      this.selected = event.target.value
+      this.selected = event.target.value;
       this.$emit('select:change', event.target.value)
     }
   }
